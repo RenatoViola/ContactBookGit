@@ -24,6 +24,8 @@ public class Main {
     public static final String CONTACT_REMOVED = "contactBook.Contact removed.";
     public static final String CONTACT_UPDATED = "contactBook.Contact updated.";
     public static final String BOOK_EMPTY = "contactBook.Contact book empty.";
+
+    public static final String PHONE_DOES_NOT_EXIST = "Phone number does not exist.";
     public static final String QUIT_MSG = "Goodbye!";
     public static final String COMMAND_ERROR = "Unknown command.";
 
@@ -56,6 +58,7 @@ public class Main {
                     listAllContacts(cBook);
                     break;
                 case GIVEN_NUMBER:
+                    givenNumber(in, cBook);
                     break;
                 case EXISTING_PHONE:
                     break;
@@ -152,5 +155,14 @@ public class Main {
             }
         }
         else System.out.println(BOOK_EMPTY);
+    }
+
+    private static void givenNumber(Scanner in,ContactBook cBook){
+        int phone;
+        phone = in.nextInt(); in.nextLine();
+        Contact c = cBook.getContactByPhoneNumber(phone);
+        if(c != null)
+            System.out.println(c.getName());
+        else  System.out.println(PHONE_DOES_NOT_EXIST);
     }
 }
