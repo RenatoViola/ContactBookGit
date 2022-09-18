@@ -60,6 +60,22 @@ public class ContactBook {
         contacts[searchIndex(name)].setEmail(email);
     }
 
+
+    public boolean checkRepeatedPhones(){
+        int currentNumber;
+        this.initializeIterator();
+        int n = 1;
+        while(this.hasNext()) {
+            currentNumber = this.next().getPhone();
+            for (int i = n; i < counter; i++)
+                if(currentNumber == contacts[i].getPhone()) return true;
+            n++;
+        }
+        return false;
+    }
+
+
+
     public Contact getContactByPhoneNumber(int cPhone){
         for (Contact c : contacts)
             if (c != null && c.getPhone() == cPhone) return c;
