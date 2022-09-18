@@ -60,6 +60,7 @@ public class ContactBook {
         contacts[searchIndex(name)].setEmail(email);
     }
 
+
     public boolean checkRepeatedPhones(){
         int currentNumber;
         this.initializeIterator();
@@ -73,6 +74,13 @@ public class ContactBook {
         return false;
     }
 
+
+
+    public Contact getContactByPhoneNumber(int cPhone){
+        for (Contact c : contacts)
+            if (c != null && c.getPhone() == cPhone) return c;
+        return null;
+    }
 
     private int searchIndex(String name) {
         int i = 0;
