@@ -60,6 +60,20 @@ public class ContactBook {
         contacts[searchIndex(name)].setEmail(email);
     }
 
+    public boolean checkRepeatedPhones(){
+        int currentNumber;
+        this.initializeIterator();
+        int n = 1;
+        while(this.hasNext()) {
+            currentNumber = this.next().getPhone();
+            for (int i = n; i < counter; i++)
+                if(currentNumber == contacts[i].getPhone()) return true;
+            n++;
+        }
+        return false;
+    }
+
+
     private int searchIndex(String name) {
         int i = 0;
         int result = -1;
