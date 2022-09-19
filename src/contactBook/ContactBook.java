@@ -64,12 +64,10 @@ public class ContactBook {
     public boolean checkRepeatedPhones(){
         int currentNumber;
         this.initializeIterator();
-        int n = 1;
         while(this.hasNext()) {
             currentNumber = this.next().getPhone();
-            for (int i = n; i < counter; i++)
+            for (int i = currentContact; i < counter; i++)
                 if(currentNumber == contacts[i].getPhone()) return true;
-            n++;
         }
         return false;
     }
